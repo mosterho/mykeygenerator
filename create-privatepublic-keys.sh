@@ -3,9 +3,8 @@
 #set -x      #uncomment this to display more detail from the execution of each line below
 
 echo ""
-#echo "Generating Diffie-Hellman pem file..."
-# Forgot about this to create DH param file if needed (not needed here)
-#openssl dhparam -out ./Results/dh2048.pem 2048
+echo "Delete existing public and private keys, CSR, etc."
+rm Results/*.*
 
 echo ""
 echo "Generating private key..."
@@ -35,5 +34,5 @@ echo ""
 echo "Verifying CSR..."
 openssl req -in ./Results/privatekey-encrypted-pem.csr -text -verify -noout
 
-echo "Sleeping for 600 seconds, CTRL-c when ready to close this window."
-sleep 600
+#echo "Sleeping for 600 seconds, CTRL-c when ready to close this window."
+#sleep 600
