@@ -26,13 +26,14 @@ diff -s ./Results/publickey.txt ./Results/publicdata-of-privatekey.txt
 ## creating a CSR here will also produce an encrypted (password) private key,
 ## but on screen only (with these arguments)
 echo ""
-echo "creating new CSR from private key... stand by for prompts!"
-openssl req -new -in ./Results/private.key -out ./Results/privatekey-encrypted-pem.csr -config ./CNF/ESIS-CA-request.cnf
+echo "creating new CSR AND NEW ADDITIONAL private key based on ESIS prompts... stand by for prompts!"
+echo "*********   DO NOT ENTER A PASSPHRASE   **********"
+openssl req -new  -keyout ./Results/private-simplified.key  -out ./Results/privatekey-encrypted-pem-simplified.csr -config ./CNF/ESIS-CA-request.cnf
 ##openssl req -new -in ./Results/private.key -out ./Results/privatekey-encrypted.pem
 
 echo ""
 echo "Verifying CSR..."
-openssl req -in ./Results/privatekey-encrypted-pem.csr -text -verify -noout
+openssl req -in ./Results/privatekey-encrypted-pem-simplified.csr -text -verify -noout
 
 #echo "Sleeping for 600 seconds, CTRL-c when ready to close this window."
 #sleep 600
